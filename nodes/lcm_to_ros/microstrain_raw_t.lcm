@@ -1,0 +1,19 @@
+package microstrain;
+
+struct raw_t
+{
+  // We treat this as nanoseconds
+  int64_t utime;
+
+  double timeTow;
+  int16_t timeWeek;
+  int16_t timeFlags;
+
+  float accel[3]; // m/s^2
+  float gyro[3];  // rad/s
+  float mag[3];   // gauss
+  float pressure; // gauss
+
+  // acceleration is transformed into m/s^2
+  // by a gravity constant of 9.80665
+}

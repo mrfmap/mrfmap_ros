@@ -1,0 +1,48 @@
+viewer_params_nodes:
+  cam_in_body: [ 1., 0. , 0., 0.,
+       0.,  1., 0., 0.,
+       0.,  0., 1., 0.,
+       0.        ,  0.        ,  0.        ,  1.        ]
+  world_frame_transform: [1, 0, 0, 0, 0, 0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1]
+  camera_topic: '/camera/depth/image'
+  odom_topic: '/camera/odometry'
+  is_legacy_odom_msg: True
+  is_icl_bag: True
+  img_scale_factor: 1.0
+  img_lag: 0.0 # Lag of the image stream vis a vis vicon stream
+  view_octomap: True
+  render_likelihoods: False
+  rotation_thresh: 0.5
+  translation_thresh: 1.0
+
+gvdb_params:
+  K: [525, 0., 319.5, 0., 525, 239.5, 0., 0., 1.]
+  res: 0.05
+  prior: 0.1
+  dims: [10.0, 10.0, 5.0]
+  occ_thresh: 0.5
+  max_iters: 3
+  gvdb_map_config: [3, 3, 3, 3, 3]
+  rows: 480
+  cols: 640
+  use_polys: False
+  poly_degree: 3
+  depth_sigma_lookup: ""
+  depth_bias_lookup: ""
+  const_sigmasq_poly: [0.05, 0, 0]
+  # const_sigmasq_poly: [ -0.00029, 0.00037, 0.001365]
+  
+
+checkerboard_params:
+  # Small board
+  s: 0.08
+  rows: 4
+  cols: 6
+  tag_in_board: [ 0.03861709,  0.99923544, -0.00610339, -0.00404281,
+        0.99925196, -0.03862887, -0.00182507, -0.00276896,
+        -0.00205944, -0.00602834, -0.99997971, -0.00389196,
+        0.        ,  0.        ,  0.        ,  1.        ]
+  # # Big board
+  # s: 0.13
+  # rows: 6
+  # cols: 7

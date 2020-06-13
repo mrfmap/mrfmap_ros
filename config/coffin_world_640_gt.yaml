@@ -1,0 +1,33 @@
+viewer_params_nodes:
+  cam_in_body: [ 0., 0. , 1., 0.,
+                -1.,  0., 0., 0.,
+                0.,  -1., 0., 0.,
+                0.,  0.,  0.,  1.]
+  camera_topic: '/camera/depth/image'
+  odom_topic: '/camera/odometry'
+  is_legacy_odom_msg: False
+  is_icl_bag: False
+  img_scale_factor: 1.0
+  img_lag: 0.0
+  view_octomap: True
+  render_likelihoods: True
+  rotation_thresh: 1.0
+  translation_thresh: 1.0
+
+gvdb_params:
+  K: [381.36115025, 0., 319.5, 0., 381.36115025, 239.5, 0., 0., 1.]
+  res: 0.02
+  prior: 0.1
+  dims: [10.0, 10.0, 3.0]
+  occ_thresh: 0.5
+  acc_thresh: 0.1
+  max_iters: 3
+  gvdb_map_config: [3, 3, 3, 3, 3]
+  rows: 480
+  cols: 640
+  use_polys: False
+  poly_degree: 3
+  depth_sigma_lookup: "realsense_stddev_poly5x.yml"
+  depth_bias_lookup: "realsense_bias_poly5x.yml"
+  const_sigmasq_poly: [0.05, 0, 0]
+  # const_sigmasq_poly: [ -0.00029, 0.00037, 0.001365]

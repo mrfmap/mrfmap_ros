@@ -1,0 +1,12 @@
+package xtion;
+
+struct rgbd_t
+{
+  int64_t utime;
+  int32_t width;
+  int32_t height;
+  int32_t rgblen;
+  int32_t depthlen;
+  byte rgb[rgblen];
+  byte depth[depthlen];
+}

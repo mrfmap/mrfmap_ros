@@ -1,0 +1,15 @@
+gvdb_params:
+  K: [600.0, 0., 320.0, 0., 600.0, 240.0, 0., 0., 1.]
+  rows: 480
+  cols: 640
+  res: 0.05
+  dims: [12.0, 5.0, 3.0]
+  prior: 0.05
+  occ_thresh: 0.01
+  use_polys: True
+  poly_degree: 3
+  depth_sigma_lookup: "realsense_stddev_poly5x.yml"
+  depth_bias_lookup: "realsense_bias_poly5x.yml"
+  sigma_sq: 0.0056
+  max_iters: 3
+  gvdb_map_config: [1, 3, 3, 3, 5]

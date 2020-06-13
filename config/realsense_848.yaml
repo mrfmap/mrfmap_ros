@@ -1,0 +1,59 @@
+viewer_params_nodes:
+  cam_in_body: 
+      [ 0.99772133, -0.0652678 , -0.01709546, -0.00546123,
+       0.06221528,  0.98803082, -0.14115367,  0.01423976,
+       0.02610363,  0.13976842,  0.98984008, -0.01037664,
+       0.        ,  0.        ,  0.        ,  1.        ]
+  world_frame_transform: [1, 0, 0, 0, 
+                          0, 1, 0, 0,
+                          0, 0, 1, 0.2,
+                          0, 0, 0, 1]
+  camera_topic: '/camera/aligned_depth_to_infra1/image_raw'
+  odom_topic: '/vicon/realsense_rig_new'
+  is_legacy_odom_msg: False
+  is_icl_bag: True
+  img_scale_factor: 0.001
+  img_lag: 0.102 # Lag of the image stream vis a vis vicon stream
+  view_octomap: True
+  render_likelihoods: False
+  rotation_thresh: 0.5
+  translation_thresh: 0.5
+
+gvdb_params:
+  K: [427.131622, 0., 422.116577, 0., 427.131622, 239.362793, 0., 0., 1.]
+  res: 0.01
+  prior: 0.1
+  dims: [3.0, 3.0, 2.0]
+  occ_thresh: 0.5
+  max_iters: 3
+  gvdb_map_config: [3, 3, 3, 3, 3]
+  rows: 480
+  cols: 848
+  use_polys: False
+  poly_degree: 3
+  depth_sigma_lookup: "realsense_848_small_board_0_25_to_2_5_at_0_1_res_20_x_20_stddev.yml"
+  depth_bias_lookup: "realsense_848_small_board_0_25_to_2_5_at_0_1_res_20_x_20_bias.yml"
+  const_sigmasq_poly: [0.01, -0.00095238,  0.00857143]
+  const_bias_poly: [0.02375   , -0.0425    ,  0.04833333]
+  # const_sigmasq_poly: [0.075, 0, 0]
+  # const_sigmasq_poly: [ -0.00029, 0.00037, 0.001365]
+  # const_sigmasq_poly: [0.00313, 0.00116, 0.0]
+  # For kinect 1, -0.00029 + 0.00037 · z + 0.001365 . z^2
+  # For kinect 2, = 0.00313 + 0.00116 · z + 0.00052 · z^2
+  # For realsense = 0.01 - 0.00095238 . z +  0.00857143 . z^2
+
+  # Previous default: const_sigmasq_poly: [0.075, 0, 0]
+
+checkerboard_params:
+  # Small board
+  s: 0.08
+  rows: 4
+  cols: 6
+  tag_in_board: [ 0.03861709,  0.99923544, -0.00610339, -0.00404281,
+        0.99925196, -0.03862887, -0.00182507, -0.00276896,
+        -0.00205944, -0.00602834, -0.99997971, -0.00389196,
+        0.        ,  0.        ,  0.        ,  1.        ]
+  # # Big board
+  # s: 0.13
+  # rows: 6
+  # cols: 7

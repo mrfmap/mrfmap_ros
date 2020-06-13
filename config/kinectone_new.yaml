@@ -1,0 +1,57 @@
+viewer_params_nodes:
+  cam_in_body:
+       [ 0.99581518,  0.08965293, -0.01773352,  0.1114733 , 
+       -0.09114318,   0.98850032, -0.12066495,  0.01985168,
+        0.00671162,  0.12177628,   0.99253488,  0.05928231,
+        0.        ,  0.        ,  0.        ,  1.        ]
+  world_frame_transform: [1, 0, 0, 0, 
+                          0, 1, 0, 0,
+                          0, 0, 1, 0.2,
+                          0, 0, 0, 1]
+  camera_topic: '/kinect2/qhd/image_depth_rect'
+  odom_topic: '/vicon/kinect_one_new'
+  is_legacy_odom_msg: False
+  is_icl_bag: True
+  img_scale_factor: 0.001
+  img_lag: 0.107 # Lag of the image stream vis a vis vicon stream
+  view_octomap: True
+  render_likelihoods: False
+  rotation_thresh: 1.0
+  translation_thresh: 0.7
+
+gvdb_params:
+  K: [526.8657487036021, 0.0, 484.1157441202897, 0.0, 526.6591921543554, 274.7330081363912, 0.0, 0.0, 1.0]
+  res: 0.05
+  prior: 0.1
+  dims: [3.0, 3.0, 2.0]
+  occ_thresh: 0.5
+  max_iters: 3
+  gvdb_map_config: [3, 3, 3, 3, 3]
+  rows: 540
+  cols: 960
+  use_polys: False
+  poly_degree: 2
+  depth_sigma_lookup: "kinect2_stddev_poly5x.yml"
+  depth_bias_lookup: "kinect2_bias_poly5x.yml"
+  const_sigmasq_poly: [0.05, 0, 0]
+  const_bias_poly: [-0.02, 0, 0]
+  # const_sigmasq_poly: [ -0.00029, 0.00037, 0.001365]
+  # const_sigmasq_poly: [0.00313, 0.00116, 0.0]
+  # For kinect 1, -0.00029 + 0.00037 · z + 0.001365 . z^2
+  # For kinect 2, = 0.00313 + 0.00116 · z + 0.00052 · z^2
+  # Previous default: const_sigmasq_poly: [0.075, 0, 0]
+ 
+
+checkerboard_params:
+  # Small board
+  s: 0.08
+  rows: 4
+  cols: 6
+  tag_in_board: [ 0.028209,  0.999479, -0.015681,  0.00081 ,
+                  0.999557, -0.028055,  0.009943,  0.00557 ,
+                  0.009498, -0.015954, -0.999828, -0.016348,
+                  0.      ,  0.      ,  0.      ,  1.      ]
+  # # Big board
+  # s: 0.13
+  # rows: 6
+  # cols: 7

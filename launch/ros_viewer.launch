@@ -1,0 +1,9 @@
+<launch>
+  <arg name="output" default="screen"/>
+
+    <node pkg="mrfmap_ros" name="ros_mrfmap_node" type="ros_mrfmap_node" output="$(arg output)">
+      <param name="config_file" value="$(find mrfmap_ros)/config/ICL.yaml"/>
+    </node>
+
+  
+</launch>

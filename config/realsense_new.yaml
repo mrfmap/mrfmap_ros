@@ -1,0 +1,29 @@
+viewer_params_nodes:
+  cam_in_body:
+      [ 0.95170894, -0.28949845, -0.10217999, -0.06618495,
+        0.27108173,  0.94866847, -0.16291972, -0.0134201 ,
+        0.14409994,  0.12735303,  0.981334  ,  0.02284313,
+        0.        ,  0.        ,  0.        ,  1.        ]       
+  camera_topic: '/camera/aligned_depth_to_color/image_raw'
+  odom_topic: '/realsense_rig_new/vicon_odom'
+  img_scale_factor: 0.001
+  view_octomap: False
+  render_likelihoods: False
+  rotation_thresh: 1.0
+  translation_thresh: 0.7
+
+gvdb_params:
+  K: [618.23327637, 0., 325.80047607, 0., 618.16943359, 241.94268799, 0., 0., 1.]
+  res: 0.01
+  prior: 0.5
+  dims: [5.0, 5.0, 5.0]
+  occ_thresh: 0.01
+  use_polys: False
+  poly_degree: 3
+  depth_sigma_lookup: "realsense_stddev_poly5x.yml"
+  depth_bias_lookup: "realsense_bias_poly5x.yml"
+  sigma_sq: 0.0056
+  max_iters: 3
+  gvdb_map_config: [1, 3, 3, 3, 3]
+  rows: 480
+  cols: 640
