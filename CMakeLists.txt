@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.11)
 # and C, so that GLEW compiles correctly:
 project(mrfmap_ros LANGUAGES CUDA CXX C)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_LIST_DIR}/cmake")
-# Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++11)
+set(CXX_STANDARD 14)
+set(CXX_STANDARD_REQUIRED TRUE)
 
 # Find catkin macros and libraries if COMPONENTS list like find_package(catkin
 # REQUIRED COMPONENTS xyz) is used, also find other catkin packages
@@ -18,7 +18,6 @@ find_package(
              rospy
              sensor_msgs
              tf2_ros)
-find_package(Threads)
 # System dependencies are found with CMake's conventions Specify Eigen path from
 # ENV
 set(EIGEN3_INCLUDE_DIR
@@ -57,8 +56,7 @@ catkin_package(
   sensor_msgs
   tf2_ros
   DEPENDS
-  OpenCV
-  mrfmap)
+  OpenCV)
 set(CMAKE_CXX_FLAGS
     "${CMAKE_CXX_FLAGS} -ffast-math  -fopenmp -O3 -fPIC -march=native")
 set(CMAKE_CXX_FLAGS_RELEASE
@@ -122,6 +120,7 @@ install(
     DESTINATION ${CMAKE_INSTALL_PREFIX}/${CATKIN_PACKAGE_PYTHON_DESTINATION})
 
 # Also copy over all the libraries from the targets into lib
+# Ugly, but catkin forces my hand...
 get_target_property(SHARED_LIB_PATH mrfmap::mrfmap IMPORTED_LOCATION_RELEASE)
 get_filename_component(DIR ${SHARED_LIB_PATH} DIRECTORY)
 install(
@@ -129,6 +128,11 @@ install(
   DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
   FILES_MATCHING
   PATTERN "*.so*")
+install(
+    DIRECTORY ${DIR}/../include/mrfmap
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/include
+    FILES_MATCHING
+    PATTERN "*.h")
 
 get_target_property(GVDBPY_LIB_PATH mrfmap::GVDBPyModules
                     IMPORTED_LOCATION_RELEASE)
