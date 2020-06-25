@@ -14,8 +14,8 @@ mrfmap_ros is released under the permissive BSD-3 license.
 Please feel free to issue pull requests and bugs.
 
 If you end up using this library, please cite
-```
-@proceedings{shankar20mrfmap,
+```bibtex
+@inproceedings{shankar20mrfmap,
   author = {Shankar, Kumar Shaurya and Michael, Nathan},
   title = {{MRFMap: Online Probabilistic 3D Mapping using Forward Ray Sensor Models}},
   booktitle = {Robotics: Science and Systems},
