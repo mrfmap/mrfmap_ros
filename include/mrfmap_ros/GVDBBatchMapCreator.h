@@ -29,7 +29,7 @@
 template <class M>
 class AddLagSubscriber : public message_filters::SimpleFilter<M> {
  public:
-  AddLagSubscriber(float dt) : dt_(dt){};
+  AddLagSubscriber(float dt) : message_filters::SimpleFilter<M>(), dt_(dt){};
   void newMessage(const boost::shared_ptr<M const> &msg) {
     // Make a copy of incoming pointer and change the header stamp attribute
     M copy(*msg);
@@ -73,17 +73,14 @@ class GVDBBatchMapCreator {
  public:
   GVDBBatchMapCreator(std::string config_file);
   ~GVDBBatchMapCreator() {
-    DEBUG(std::cout<<"[GVDBBatchMapCreator] Deleting object!\n");
-    pose_synchronizer_.reset();
-    image_sub_.reset();
-    pose_sub_.reset();
-    odom_sub_.reset();
+    DEBUG(std::cout << "[GVDBBatchMapCreator] Deleting object!\n");
     images_.clear();
     poses_.clear();
-    inf_.reset();
-    if (generate_octomap_) {
-      octomap_.reset();
-    }
+    DEBUG(std::cout << "Deleting synchronizer...\n");
+    ros::Time::shutdown();
+    pose_synchronizer_.reset();
+    odom_synchronizer_.reset();
+    destroy_inference();
   }
   int num_tuples() {
     return poses_.size();
@@ -99,10 +96,23 @@ class GVDBBatchMapCreator {
   std::string get_stats();
   void read_config(std::string params_file);
   void load_bag(const std::string &filename);
+  void destroy_inference() {
+    inf_.reset();
+    if (generate_octomap_) {
+      octomap_.reset();
+    }
+  }
   std::shared_ptr<GVDBInference> get_inference_ptr() {
     return inf_;
   }
   std::shared_ptr<GVDBMapLikelihoodEstimator> get_octomap_ptr() {
     return octomap_->octo_;
+  }
+
+  const std::vector<Eigen::MatrixXf> &get_images() const {
+    return images_;
+  }
+  const std::vector<Eigen::MatrixXf> &get_poses() const {
+    return poses_;
   }
 };
