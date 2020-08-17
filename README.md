@@ -67,7 +67,7 @@ We need the following python libraries
 Create a new overlay
 
 ```
- cd ~ && mkdir -P sandbox/mrfmap_sandbox/src && cd sandbox/mrfmap_sandbox && catkin init
+ cd ~ && mkdir -p sandbox/mrfmap_sandbox/src && cd sandbox/mrfmap_sandbox && catkin init
  catkin config -DCMAKE_BUILD_TYPE=Release 
  catkin config --install
  cd src && git clone https://github.com/mrfmap/mrfmap_ros.git
@@ -102,7 +102,7 @@ rosrun mrfmap_ros ros_mrfmap_node _config_file:=/path/to/your/config.yaml
  
  Download the datasets available at [this](https://cmu.box.com/s/04dfdcleaj7zmdpr1i15p3ebj5ulcyox) link into a folder. For instance, for the augmented ICL livingroom1 dataset
  ```
- mkdir -P ~/bagfiles/ICL && cd ~/bagfiles/ICL
+ mkdir -p ~/bagfiles/ICL && cd ~/bagfiles/ICL
  wget https://cmu.box.com/shared/static/6pxta6wam1zb0jw1f38uj9vgzt5zbccb.bag -O living_room_with_rgb_noise.bag
  ```
 (Alternatively, it is possible to utilise/modify the ```nodes/dataset_creation/pngs_to_bags.py``` script to take a PNG file dataset and store it as a ROS bag)
